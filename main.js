@@ -25,9 +25,28 @@ let inputSpeed = document.getElementById("speed");
 let inputPositioning = document.getElementById("positioning");
 
 
+function afich(){
+   formul.style.display = "block";
+    document.getElementById('PositionRemplacant').style.display='block'
+    document.getElementById("statistiqueGarde").style.display="none" 
+    let selectPosition=document.getElementById("position")
+    selectPosition.addEventListener('change',function(){
+        if(selectPosition.value=='GK'){
+            document.getElementById("statistiqueJoueur").style.display="none"
+            document.getElementById("statistiqueGarde").style.display="block"       
+        }else{
+            document.getElementById("statistiqueJoueur").style.display="block"
+            document.getElementById("statistiqueGarde").style.display="none"
+             
+        }
+    })
+}
+
+
 let JoueurTest=false;
 let x=0;
 function openForm(event) {
+     console.log("hello");
      if (x==0) {
      document.getElementById('PositionRemplacant').style.display='none'
      }
@@ -389,7 +408,7 @@ fetch('players.json')
       card.appendChild(flagsContainer);
 
 
-      document.getElementById('reserve').appendChild(card);
+    //   document.getElementById('reserve').appendChild(card);
     }
 
     dragPlayerReserv();

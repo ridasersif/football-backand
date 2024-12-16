@@ -12,16 +12,18 @@ h1,h2,h3,h4,h5,h6,span,p{
   justify-content: space-around;
   height: 60px;
   align-items: center;
+  background-color: #38dc0b;
 }
 .navbar .choi a{
-  text-decoration: none;
+  text-decoration: none;  
   margin-left: 20px;
-  
- 
+}
+.sign button{
+  background-color: #0a0079;
 }
 
 .stade {
-    background-image: url(/src/assets/img/stadium_background.webp);
+    background-image: url(./src/assets/img/stadium_background.webp);
     background-size: cover;
     background-position: center;
     width: 100%;
@@ -38,7 +40,7 @@ h1,h2,h3,h4,h5,h6,span,p{
 }
 
 .attaque .card-imag, .milieu .card-imag, .defense  .card-imag, .garde  .card-imag {
-    background-image: url(/src/assets/img/badge_gold.webp);
+    background-image: url(./src/assets/img/badge_gold.webp);
     background-size: contain;
     background-repeat: no-repeat;
     width: 18vw; 
@@ -50,7 +52,7 @@ h1,h2,h3,h4,h5,h6,span,p{
     transition: 0.3s ease;  
 }
 .garde  .card-imag {
-    background-image: url(/src/assets/img/badge_ballon_dor.webp);
+    background-image: url(./src/assets/img/badge_ballon_dor.webp);
     color: #ccc;
 }
 .garde  .card-imag .pac-sho-pas-dri-def-phy .condition-physique .condition-physique-nom {
@@ -90,7 +92,7 @@ h1,h2,h3,h4,h5,h6,span,p{
 
 
 .reserve .card-imag {
-  background-image: url(/src/assets/img/badge_gold.webp);
+  background-image: url(./src/assets/img/badge_gold.webp);
     background-size: contain;
     background-repeat: no-repeat;
     width: 18vw; 
