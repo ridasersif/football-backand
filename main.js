@@ -1,4 +1,6 @@
 let formul = document.getElementById("formul");
+let formul_players = document.getElementById("formul_players");
+let formul_gards = document.getElementById("formul_gards");
 let btnAddJoueur = document.getElementById("btn-add-joueur");
 let currentCard = null;
 
@@ -24,9 +26,12 @@ let inputReflexes = document.getElementById("reflexes");
 let inputSpeed = document.getElementById("speed");
 let inputPositioning = document.getElementById("positioning");
 
-
+//**************************************************************************** */
 function afich(){
    formul.style.display = "block";
+   document.getElementById('clube-form').style.display = "none";  
+   document.getElementById('player-form').style.display = "block";  
+   document.getElementById('countries-form').style.display = "none"; 
     document.getElementById('PositionRemplacant').style.display='block'
     document.getElementById("statistiqueGarde").style.display="none" 
     let selectPosition=document.getElementById("position")
@@ -41,6 +46,35 @@ function afich(){
         }
     })
 }
+function afich_form_clube(){
+
+    formul.style.display = "block";
+   document.getElementById('clube-form').style.display = "block";  
+   document.getElementById('player-form').style.display = "none";  
+   document.getElementById('countries-form').style.display = "none";  
+}
+function afich_form_countries(){
+    formul.style.display = "block";
+   document.getElementById('clube-form').style.display = "none";  
+   document.getElementById('player-form').style.display = "none";  
+   document.getElementById('countries-form').style.display = "block";  
+}
+
+function resetForm() {
+    document.getElementById("playerForm").reset(); 
+}
+function tabelPlayers(){
+      document.getElementById('tables-players').style.display='block'
+     
+}
+
+
+
+//*********************************************************************** */
+
+
+
+
 
 
 let JoueurTest=false;
@@ -106,7 +140,7 @@ function openForm(event) {
     
 }
 function hideForm(){
-    formul.style.display = "none";
+    formul.style.display = "none"; 
     document.getElementById("player-form").reset();
      document.getElementById("feckDiv").style.zIndex="-1"
     
