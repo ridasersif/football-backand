@@ -44,7 +44,7 @@ if (mysqli_num_rows($result) > 0) {
         echo "<td>" . htmlspecialchars($row["dribbling"]) . "</td>";
         echo "<td>" . htmlspecialchars($row["defending"]) . "</td>";
         echo "<td>" . htmlspecialchars($row["physical"]) . "</td>";
-        echo "<td ><a  class='update' href='?modifid=" . $row["id"] . "'><i onclick=' afich()' class='fa-solid fa-pen-to-square'></i></a></td>";
+        echo "<td ><a  class='update' href='update_player.php?id=" . $row["id"] . "'><i  class='fa-solid fa-pen-to-square'></i></a></td>";
         echo "<td><a class='delete' href='delete_player.php?id=" . $row["id"] . "'><i class='fa-solid fa-trash'></i></a></td>";
         echo "</tr>";
     }

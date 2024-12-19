@@ -14,7 +14,6 @@ body {
     gap: 20px;
     height: 100vh;
     flex-grow: 1;
-    background-color: #001;
 }
 
 .menu {
@@ -73,6 +72,7 @@ ul li a:hover, .active, .data-info .box:hover {
     flex-grow: 1;
     height: auto;
     margin-bottom: 20px;
+    padding: 10px 10px 0 0;
     
 }
 
@@ -204,6 +204,7 @@ td .updet i:hover {
     width: 100%;
     table-layout: fixed; 
     overflow: hidden; 
+  
 }
 
 .tables {
@@ -226,6 +227,6 @@ tr td #img_flag_url,tr td #img_flag_url{
 }
 .clube_countries{
     display: flex;
-    flex-direction: column !important;
+    flex-direction: column;
    
 }

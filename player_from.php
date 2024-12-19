@@ -143,7 +143,7 @@
             <button type="submit" onclick="resetForm()" name="addclube" id="btnAddJoueur">Ajoute</button>
         </div>
     </form>
-    <form action="insert_countrie.php" method="POST" id="countries-form">
+    <form action="insert_countries.php" method="POST" id="countries-form">
         <div class="informationJoueur clube_countries">
             <div class="form-group">
                 <label for="name">Nom</label>

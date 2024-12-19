@@ -53,6 +53,11 @@ function afich_form_clube(){
    document.getElementById('player-form').style.display = "none";  
    document.getElementById('countries-form').style.display = "none";  
 }
+function afich_form_clube_updet(){
+    document.querySelector(".afich_form_clube_class").style.display = "block"
+    formul.style.display = "block";
+   document.getElementById('clube-form').style.display = "block"; 
+}
 function afich_form_countries(){
     formul.style.display = "block";
    document.getElementById('clube-form').style.display = "none";  

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css?v=1.74">
-    <link rel="stylesheet" href="styledacc.css?v=1.32">
+    <link rel="stylesheet" href="styledacc.css?v=1.23">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
     <title>Document</title>
 </head>
@@ -212,21 +212,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        
-
-
           
-            <script src="main.js?v=1.23"></script>
+            <script src="main.js?v=<?php echo time(); ?>" defer></script>
 </body>
 </html> 
