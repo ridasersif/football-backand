@@ -11,17 +11,60 @@
 </head>
 <body>
 <?php
-    include ('conect.php');
-    $ID=$_GET["id"];
-    
-    $updet_countries=mysqli_query($conn,"SELECT * FROM players WHERE id=$ID");
-    $data=mysqli_fetch_array($updet_countries);
-    ?>
+include ('conect.php');
+$ID = $_GET["id"];
+$updet_countries = mysqli_query($conn, "SELECT * FROM players WHERE id=$ID");
+$data = mysqli_fetch_array($updet_countries);
+
+if (isset($_POST['updatplayer'])) {
+    $nationality_id = (int) $_POST['nationality'];  
+    $club_id = (int) $_POST['club'];
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $photo_url = mysqli_real_escape_string($conn, $_POST['photo']);
+    $position = mysqli_real_escape_string($conn, $_POST['position']);
+    $rating = (int) $_POST['rating'];
+
+    if ($_POST['position'] != 'GK') {
+        $pace = (int) $_POST['pace'];
+        $shooting = (int) $_POST['shooting'];
+        $passing = (int) $_POST['passing'];
+        $dribbling = (int) $_POST['dribbling'];
+        $defending = (int) $_POST['defending'];
+        $physical = (int) $_POST['physical'];
+        $diving = $handling = $kicking = $reflexes = $speed = $positioning = 0;
+    } else {
+        $pace = $shooting = $passing = $dribbling = $defending = $physical = 0;    
+        $diving = (int) $_POST['diving'];
+        $handling = (int) $_POST['handling'];
+        $kicking = (int) $_POST['kicking'];
+        $reflexes = (int) $_POST['reflexes'];
+        $speed = (int) $_POST['speed'];
+        $positioning = (int) $_POST['positioning'];
+    }
+
+    $sql_player = "UPDATE players SET name='$name', photo_url='$photo_url', position='$position', 
+                   nationality_id=$nationality_id, club_id=$club_id, rating=$rating, 
+                   pace=$pace, shooting=$shooting, passing=$passing, dribbling=$dribbling, 
+                   defending=$defending, physical=$physical, diving=$diving, handling=$handling, 
+                   kicking=$kicking, reflexes=$reflexes, speed=$speed, positioning=$positioning 
+                   WHERE id=$ID";
+
+    if (mysqli_query($conn, $sql_player)) {
+        header("Location: admin.php");
+        exit();
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+
+    $conn->close();
+}
+?>
+
 <div >
     <div class="button-start">
     <button id="btnHideForm" onclick="hideForm(event)"><a href="admin.php" style="  text-decoration: none;">X</a></button>
     </div>
-    <form  action="insert_data.php" method="POST" >
+    <form  action="" method="POST" >
         <div class="informationJoueur">
             <div class="form-group">
                 <label for="name">Nom</label>
@@ -61,7 +104,8 @@
             </div>
             <div class="form-group" id="PositionRemplacant">
                 <label for="position">Position</label>
-                <select name="position" id="position" value="<?php echo $data['position'] ?>">
+                <select name="position" id="position" >
+                    <option value="<?php echo $data['position'] ?>" selected><?php echo $data['position'] ?></option>
                     <option value="LW">LW</option>
                     <option value="ST">ST</option>
                     <option value="RW">RW</option>
@@ -77,27 +121,27 @@
             <div class="statistiqueJoueur">
                 <div class="form-group">
                     <label for="pace">Pace</label>
-                    <input type="number" id="pace" name="pace" min="0" max="100" >
+                    <input type="number" id="pace"  name="pace" value="<?php echo $data['pace'] ?>"  min="0" max="100" >
                 </div>
                 <div class="form-group">
                     <label for="shooting">Shooting</label>
-                    <input type="number" id="shooting" name="shooting" min="0" max="100" >
+                    <input type="number" id="shooting" name="shooting" value="<?php echo $data['shooting'] ?>" min="0" max="100" >
                 </div>
                 <div class="form-group">
                     <label for="passing">Passing</label>
-                    <input type="number" id="passing"  name="passing" min="0" max="100">
+                    <input type="number" id="passing"  name="passing" value="<?php echo $data['passing'] ?>" min="0" max="100">
                 </div>
                 <div class="form-group">
                     <label for="dribbling">Dribbling</label>
-                    <input type="number" id="dribbling" name="dribbling"  min="0" max="100" >
+                    <input type="number" id="dribbling" name="dribbling" value="<?php echo $data['dribbling'] ?>"  min="0" max="100" >
                 </div>
                 <div class="form-group">
                     <label for="defending">Defending</label>
-                    <input type="number" id="defending" name="defending" min="0" max="100" >
+                    <input type="number" id="defending" name="defending" value="<?php echo $data['defending'] ?>" min="0" max="100" >
                 </div>
                 <div class="form-group">
                     <label for="physical">Physical</label>
-                    <input type="number" id="physical" name="physical" min="0" max="100" >
+                    <input type="number" id="physical" name="physical" value="<?php echo $data['physical'] ?>" min="0" max="100" >
                 </div>
             </div>
         </div> 
@@ -106,33 +150,33 @@
             <div class="statistiqueGarde">
                 <div class="form-group">
                     <label for="diving">Diving</label>
-                    <input type="number" id="diving" name="diving" min="0" max="100">
+                    <input type="number" id="diving" name="diving" value="<?php echo $data['diving'] ?>" min="0" max="100">
                 </div>
                 <div class="form-group">
                     <label for="handling">Handling</label>
-                    <input type="number" id="handling" name="handling" min="0" max="100">
+                    <input type="number" id="handling" name="handling" value="<?php echo $data['handling'] ?>" min="0" max="100">
                 </div>
                 <div class="form-group">
                     <label for="kicking">Kicking</label>
-                    <input type="number" id="kicking" name="kicking" min="0" max="100" >
+                    <input type="number" id="kicking" name="kicking" value="<?php echo $data['kicking'] ?>" min="0" max="100" >
                 </div>
                 <div class="form-group">
                     <label for="reflexes">Reflexes</label>
-                    <input type="number" id="reflexes" name="reflexes" min="0" max="100">
+                    <input type="number" id="reflexes" name="reflexes" value="<?php echo $data['reflexes'] ?>" min="0" max="100">
                 </div>
                 <div class="form-group">
                     <label for="speed">Speed</label>
-                    <input type="number" id="speed" name="speed" min="0" max="100" >
+                    <input type="number" id="speed" name="speed" value="<?php echo $data['speed'] ?>" min="0" max="100" >
                 </div>
                 <div class="form-group">
                     <label for="positioning">Positioning</label>
-                    <input type="number" id="positioning" name="positioning" min="0" max="100">
+                    <input type="number" id="positioning" name="positioning" value="<?php echo $data['positioning'] ?>" min="0" max="100">
                 </div>
             </div>
         </div>
 
         <div class="button-and">
-            <button type="submit" onclick="resetForm()" name="addJoueur" id="btnAddJoueur">Ajoute</button>
+            <button type="submit" onclick="resetForm()" name="updatplayer" id="btnAddJoueur">Updet</button>
         </div>
     </form>
    
@@ -143,6 +187,6 @@
             document.getElementById("playerForm").reset(); 
         }
     </script>
-<script src="main.js?v=1.32"></script>
+<script src="main.js?v=1.82"></script>
 </body>
 </html>

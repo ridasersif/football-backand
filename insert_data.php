@@ -1,6 +1,6 @@
 <?php
 include 'conect.php';
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST['addJoueur'])) {
     $nationality_id = (int) $_POST['nationality'];  
     $club_id = (int) $_POST['club'];
 
